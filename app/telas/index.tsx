@@ -43,19 +43,19 @@ export default function TrocarPontos() {
 
             <View style={styles.resumeBox}>
             <View style={styles.resumeRow}>
-              <Text style={styles.resumeLabel}>Seus pontos</Text>
+                 <Text style={styles.resumeLabel}>Seus pontos</Text>
               <Text style={styles.resumeValueHighlight}>15.500</Text>
             </View>
             <View style={[styles.resumeRow, styles.resumeRowDivider]}>
-              <Text style={styles.resumeLabel}>Pontos que deseja trocar</Text>
-              <Text style={styles.resumeValueMuted}>-</Text>
+                <Text style={styles.resumeLabel}>Pontos que deseja trocar</Text>
+           <Text style={styles.resumeValueMuted}>-</Text>
             </View>
             <View style={styles.resumeRow}>
               <Text style={styles.resumeLabel}>Seus pontos com a troca</Text>
                 <Text style={styles.resumeValueMuted}>-</Text>
               </View>
               <View style={[styles.resumeRow, styles.resumeRowLast]}>
-                <Text style={styles.resumeLabel}>{"Voc\u00EA pagar\u00E1"}</Text>
+                  <Text style={styles.resumeLabel}>{"Voc\u00EA pagar\u00E1"}</Text>
                 <Text style={styles.resumeValueMuted}>-</Text>
               </View>
             </View>
@@ -63,7 +63,7 @@ export default function TrocarPontos() {
 
           <View style={styles.actions}>
             <TouchableOpacity style={styles.tradeButton}>
-              <Text style={styles.tradeButtonText}>Trocar</Text>
+               <Text style={styles.tradeButtonText}>Trocar</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.backButton}>

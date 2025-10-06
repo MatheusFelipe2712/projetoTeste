@@ -42,18 +42,22 @@ export default function TrocaPontosResumo() {
             <View style={styles.resumeBox}>
               <View style={styles.resumeRow}>
               <Text style={styles.resumeLabel}>Seus pontos</Text>
+
               <Text style={styles.resumeValueHighlight}>15.500</Text>
               </View>
               <View style={styles.resumeRow}>
+
                 <Text style={styles.resumeLabel}>Pontos que deseja trocar</Text>
                 <Text style={styles.resumeValueHighlight}>2.000</Text>
               </View>
               <View style={styles.resumeRow}>
                 <Text style={styles.resumeLabel}>Seus pontos com a troca</Text>
                 <Text style={styles.resumeValueMuted}>13.500</Text>
+
               </View>
               <View style={[styles.resumeRow, styles.resumeRowLast]}>
                 <Text style={styles.resumeLabel}>Milhas a receber</Text>
+
                 <Text style={styles.resumeValueHighlight}>2.000</Text>
               </View>
             </View>

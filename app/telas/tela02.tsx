@@ -43,16 +43,10 @@ export default function TrocaPontosSucesso() {
 
           <View style={styles.actions}>
             <TouchableOpacity activeOpacity={0.85} style={styles.primaryButton}>
-              <LinearGradient
-                colors={["#24B0FF", "#007EFF"]}
-                start={{ x: 0, y: 0 }}
-                end={{ x: 1, y: 0 }}
-                style={styles.primaryButtonGradient}
-              >
+              <LinearGradient colors={["#24B0FF", "#007EFF"]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={styles.primaryButtonGradient}>
                 <Text style={styles.primaryButtonText}>{"Ir para o in\u00EDcio"}</Text>
               </LinearGradient>
             </TouchableOpacity>
-
             <TouchableOpacity activeOpacity={0.8} style={styles.secondaryButton}>
               <Text style={styles.secondaryButtonText}>Voltar para a troca de pontos</Text>
             </TouchableOpacity>
