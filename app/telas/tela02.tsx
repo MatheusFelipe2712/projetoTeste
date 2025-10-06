@@ -7,12 +7,7 @@ export default function TrocaPontosSucesso() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.screen}>
-        <LinearGradient
-          colors={["#E200DBFF", "#E200DBFF"]}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
-          style={styles.header}
-        >
+        <LinearGradient colors={["#E200DBFF", "#E200DBFF"]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.header}>
           <View style={styles.headerIcons}>
             <TouchableOpacity style={styles.iconCircle}>
               <Ionicons name="chevron-back" size={18} color="#fff" />

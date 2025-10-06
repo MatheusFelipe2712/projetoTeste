@@ -27,10 +27,16 @@ export default function TabLayout() {
         name="tela02"
         options={{
           title: 'tela 02',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
         }}
       />
-      
+      <Tabs.Screen
+        name="tela03"
+        options={{
+         title: 'Tela 03',
+        tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+        }}
+      />
     </Tabs>
   );
 }
