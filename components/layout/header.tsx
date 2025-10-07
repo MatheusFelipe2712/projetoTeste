@@ -1,12 +1,10 @@
 ﻿import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 type HeaderProps = {
   points: string;
   title?: string;
-  gradientColors?: [string, string];
   onPressBack?: () => void;
   onPressHelp?: () => void;
 };
@@ -14,17 +12,11 @@ type HeaderProps = {
 export function Header({
   points,
   title = "Trocar pontos",
-  gradientColors = ["#E200DBFF", "#E200DBFF"],
   onPressBack,
   onPressHelp,
 }: HeaderProps) {
   return (
-    <LinearGradient
-      colors={gradientColors}
-      start={{ x: 0, y: 0 }}
-      end={{ x: 1, y: 1 }}
-      style={styles.header}
-    >
+    <View style={styles.header}>
       <View style={styles.headerIcons}>
         <TouchableOpacity style={styles.iconCircle} onPress={onPressBack}>
           <MaterialIcons name="chevron-left" size={20} color="#fff" />
@@ -33,7 +25,7 @@ export function Header({
         <Text style={styles.headerTitle}>{title}</Text>
 
         <TouchableOpacity style={styles.iconCircle} onPress={onPressHelp}>
-          <MaterialIcons name="help-outline" size={20} color="#fff" />
+          <Text style={styles.helpText}>?</Text>
         </TouchableOpacity>
       </View>
 
@@ -41,7 +33,7 @@ export function Header({
         <Text style={styles.pointsLabel}>FyDy Pontos</Text>
         <Text style={styles.pointsValue}>{points}</Text>
       </View>
-    </LinearGradient>
+    </View>
   );
 }
 
@@ -51,6 +43,7 @@ const styles = StyleSheet.create({
     paddingBottom: 24,
     paddingTop: 38,
     paddingHorizontal: 24,
+    backgroundColor: "#820AD1",
   },
   headerIcons: {
     flexDirection: "row",
@@ -58,14 +51,20 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   iconCircle: {
-    width: 32,
-    height: 32,
-    borderRadius: 16,
+    width: 40,
+    height: 40,
+    borderRadius: 20,
     backgroundColor: "rgba(255,255,255,0.15)",
     justifyContent: "center",
     alignItems: "center",
     borderWidth: 1,
     borderColor: "rgba(255,255,255,0.65)",
+  },
+  helpText: {
+    color: "#fff",
+    fontSize: 20,
+    fontWeight: "bold",
+    marginTop: -2,
   },
   headerTitle: {
     color: "#fff",

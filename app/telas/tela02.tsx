@@ -21,8 +21,7 @@ export default function TrocaPontosSucesso() {
           </View>
 
           <Text style={styles.description}>
-            Em até{" "}
-            <Text style={styles.descriptionHighlight}>7 dias úteis</Text>{" "}
+            Em até <Text style={styles.descriptionHighlight}>7 dias úteis</Text>{" "}
             as milhas serão creditadas em sua carteira de milhas escolhida.
           </Text>
 
@@ -33,7 +32,7 @@ export default function TrocaPontosSucesso() {
 
             <PrimaryButton
               style={styles.secondaryButton}
-              textStyle={{ color: "#E200DB" }}
+              textStyle={{ color: "#820AD1" }}
             >
               Voltar para a troca de pontos
             </PrimaryButton>
@@ -51,7 +50,7 @@ const styles = StyleSheet.create({
   secondaryButton: {
     backgroundColor: "#FFF",
     borderWidth: 1.5,
-    borderColor: "#E200DB",
+    borderColor: "#820AD1",
   },
   safeArea: {
     flex: 1,
@@ -63,7 +62,7 @@ const styles = StyleSheet.create({
   },
   headerWrapper: {
     width: "100%",
-    backgroundColor: "#E200DBFF",
+    backgroundColor: "#820AD1",
     paddingBottom: 36,
   },
   content: {
@@ -110,7 +109,7 @@ const styles = StyleSheet.create({
     fontWeight: "700",
   },
   actions: {
-    marginTop: 81,
+    marginTop: 71,
     width: "100%",
     gap: 10,
   },

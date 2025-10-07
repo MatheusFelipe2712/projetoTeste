@@ -1,12 +1,14 @@
-﻿import React from "react";
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
-
-import { DropdownSpinner } from "@/components/dropdown-spinner";
+﻿import { DropdownSpinner } from "@/components/dropdown-spinner";
 import { ContentCard } from "@/components/layout/content-card";
 import { Header } from "@/components/layout/header";
 import { PrimaryButton } from "@/components/PrimaryButton";
+import React, { useState } from "react";
+import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 
 export default function TrocarPontos() {
+  const [selectedPontos, setSelectedPontos] = useState("");
+  const [selectedPrograma, setSelectedPrograma] = useState("");
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.screen}>
@@ -16,12 +18,19 @@ export default function TrocarPontos() {
 
         <ContentCard style={styles.content}>
           <View>
-            <Text style={styles.sectionTitle}>
-              Escolha a quantidade de pontos
-            </Text>
+            <Text style={styles.sectionTitle}>Escolha a quantidade de pontos</Text>
 
-            <DropdownSpinner label="Selecione a quantidade de pontos" />
-            <DropdownSpinner label="Selecione o programa de Milhas" />
+            <DropdownSpinner
+              label="Selecione a quantidade de pontos"
+              options={["2.000", "5.000", "10.000"]}
+              onSelect={(value) => setSelectedPontos(value)}
+            />
+
+            <DropdownSpinner
+              label="Selecione o programa de Milhas"
+              options={["teste 01", "teste 02", "teste 03"]}
+              onSelect={(value) => setSelectedPrograma(value)}
+            />
 
             <Text style={[styles.sectionTitle, styles.resumeTitle]}>
               Resumo de sua troca
@@ -35,27 +44,26 @@ export default function TrocarPontos() {
 
               <View style={[styles.resumeRow, styles.resumeRowDivider]}>
                 <Text style={styles.resumeLabel}>Pontos que deseja trocar</Text>
-                <Text style={styles.resumeValueMuted}>-</Text>
+                <Text style={styles.resumeValueHighlight}>2.000</Text>
               </View>
 
               <View style={styles.resumeRow}>
                 <Text style={styles.resumeLabel}>Seus pontos com a troca</Text>
-                <Text style={styles.resumeValueMuted}>-</Text>
+                <Text style={styles.resumeValueHighlight}>13.500</Text>
               </View>
 
-              <View style={styles.resumeRowLast}>
-                <Text style={styles.resumeLabel}>Você pagará</Text>
-                <Text style={styles.resumeValueMuted}>-</Text>
+              <View style={styles.resumeRow}>
+                <Text style={styles.resumeLabel}>Programa escolhido</Text>
+                <Text style={styles.resumeValueHighlight}>2.000</Text>
               </View>
             </View>
           </View>
 
           <View style={styles.actions}>
             <PrimaryButton style={styles.primaryButton}>Trocar</PrimaryButton>
-
             <PrimaryButton
               style={styles.secondaryButton}
-              textStyle={{ color: "#E200DB" }}
+              textStyle={{ color: "#820AD1" }}
             >
               Voltar
             </PrimaryButton>
@@ -68,13 +76,13 @@ export default function TrocarPontos() {
 
 const styles = StyleSheet.create({
   primaryButton: {
-    backgroundColor: "#E5E2EA",
+    backgroundColor: "#1AB1E2",
     marginBottom: 0,
   },
   secondaryButton: {
     backgroundColor: "#FFF",
     borderWidth: 1.5,
-    borderColor: "#E200DB",
+    borderColor: "#820AD1",
     marginBottom: 50,
   },
   safeArea: {
@@ -87,7 +95,7 @@ const styles = StyleSheet.create({
   },
   headerWrapper: {
     width: "100%",
-    backgroundColor: "#E200DB",
+    backgroundColor: "#820AD1",
     paddingBottom: 36,
   },
   content: {
@@ -108,7 +116,7 @@ const styles = StyleSheet.create({
   resumeBox: {
     backgroundColor: "#F5F2FA",
     borderRadius: 18,
-    paddingVertical: 0,
+    paddingVertical: 8,
     paddingHorizontal: 20,
   },
   resumeRow: {
@@ -139,7 +147,7 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
   actions: {
-    marginTop: 52,
+    marginTop: 35,
     gap: 10,
   },
 });

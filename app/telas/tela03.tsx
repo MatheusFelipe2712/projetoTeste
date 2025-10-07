@@ -2,10 +2,13 @@
 import { DropdownSpinner } from "@/components/dropdown-spinner";
 import { ContentCard } from "@/components/layout/content-card";
 import { Header } from "@/components/layout/header";
-import React from "react";
+import React, { useState } from "react";
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 
 export default function TrocaPontosResumo() {
+  const [selectedPontos, setSelectedPontos] = useState("");
+  const [selectedPrograma, setSelectedPrograma] = useState("");
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.screen}>
@@ -15,11 +18,19 @@ export default function TrocaPontosResumo() {
 
         <ContentCard style={styles.content}>
           <View>
-            <Text style={styles.sectionTitle}>
-              Escolha a quantidade de pontos
-            </Text>
-            <DropdownSpinner label="2.000" selected />
-            <DropdownSpinner label="Smiles" selected />
+            <Text style={styles.sectionTitle}>Escolha a quantidade de pontos</Text>
+
+            <DropdownSpinner
+              label="Selecione a quantidade de pontos"
+              options={["2.000", "5.000", "10.000"]}
+              onSelect={(value) => setSelectedPontos(value)}
+            />
+
+            <DropdownSpinner
+              label="Selecione o programa de Milhas"
+              options={["Teste 01", "teste 02", "teste 03"]}
+              onSelect={(value) => setSelectedPrograma(value)}
+            />
 
             <Text style={[styles.sectionTitle, styles.resumeTitle]}>
               Resumo de sua troca
@@ -33,19 +44,27 @@ export default function TrocaPontosResumo() {
 
               <View style={styles.resumeRow}>
                 <Text style={styles.resumeLabel}>Pontos que deseja trocar</Text>
-                <Text style={styles.resumeValueHighlight}>2.000</Text>
+                <Text style={styles.resumeValueHighlight}>
+                  {selectedPontos || "-"}
+                </Text>
               </View>
 
               <View style={styles.innerDivider} />
 
               <View style={styles.resumeRow}>
                 <Text style={styles.resumeLabel}>Seus pontos com a troca</Text>
-                <Text style={styles.resumeValueMuted}>13.500</Text>
+                <Text style={styles.resumeValueMuted}>
+                  {selectedPontos
+                    ? 15500 - parseInt(selectedPontos.replace(".", ""))
+                    : "-"}
+                </Text>
               </View>
 
               <View style={styles.resumeRow}>
                 <Text style={styles.resumeLabel}>Milhas a receber</Text>
-                <Text style={styles.resumeValueHighlight}>2.000</Text>
+                <Text style={styles.resumeValueHighlight}>
+                  {selectedPontos || "-"}
+                </Text>
               </View>
             </View>
           </View>
@@ -54,7 +73,7 @@ export default function TrocaPontosResumo() {
             <PrimaryButton style={styles.primaryButton}>Trocar</PrimaryButton>
             <PrimaryButton
               style={styles.secondaryButton}
-              textStyle={{ color: "#E200DB" }}
+              textStyle={{ color: "#820AD1" }}
             >
               Voltar
             </PrimaryButton>
@@ -67,12 +86,12 @@ export default function TrocaPontosResumo() {
 
 const styles = StyleSheet.create({
   primaryButton: {
-    backgroundColor: "#1AB1E2",
+    backgroundColor: "#E5E2EA",
   },
   secondaryButton: {
     backgroundColor: "#FFF",
     borderWidth: 1.5,
-    borderColor: "#E200DB",
+    borderColor: "#820AD1",
   },
   safeArea: {
     flex: 1,
@@ -84,7 +103,7 @@ const styles = StyleSheet.create({
   },
   headerWrapper: {
     width: "100%",
-    backgroundColor: "#E200DBFF",
+    backgroundColor: "#820AD1",
     paddingBottom: 36,
   },
   content: {
@@ -141,7 +160,7 @@ const styles = StyleSheet.create({
     opacity: 0.8,
   },
   actions: {
-    marginTop: 10,
+    marginTop: -6,
     gap: 10,
   },
 });

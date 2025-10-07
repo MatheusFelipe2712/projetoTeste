@@ -13,7 +13,7 @@ type PrimaryButtonProps = {
   onPress?: () => void;
   disabled?: boolean;
   style?: StyleProp<ViewStyle>;
-  textStyle?: StyleProp<TextStyle>; // 👈 adicionamos isso
+  textStyle?: StyleProp<TextStyle>;
 };
 
 export function PrimaryButton({
@@ -21,7 +21,7 @@ export function PrimaryButton({
   onPress,
   disabled = false,
   style,
-  textStyle, // 👈 recebendo o estilo do texto
+  textStyle,
 }: PrimaryButtonProps) {
   return (
     <TouchableOpacity
@@ -38,7 +38,7 @@ export function PrimaryButton({
         style={[
           styles.text,
           { color: disabled ? "#A9A7AE" : "#FFFFFF" },
-          textStyle, // 👈 aplica o estilo vindo de fora
+          textStyle,
         ]}
       >
         {children}
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#E5E2EA",
   },
   buttonEnabled: {
-    backgroundColor: "#B140F0",
+    backgroundColor: "#820AD1",
   },
   text: {
     fontSize: 15,

@@ -1,73 +1,48 @@
-﻿import Ionicons from "@expo/vector-icons/Ionicons";
-import React from "react";
-import {
-  StyleProp,
-  StyleSheet,
-  Text,
-  TextStyle,
-  TouchableOpacity,
-  ViewStyle,
-} from "react-native";
+﻿import { Picker } from "@react-native-picker/picker";
+import React, { useState } from "react";
+import { StyleSheet, View } from "react-native";
 
 type DropdownSpinnerProps = {
   label: string;
-  selected?: boolean;
-  onPress?: () => void;
-  style?: StyleProp<ViewStyle>;
-  textStyle?: StyleProp<TextStyle>;
+  options: string[];
+  onSelect?: (value: string) => void;
 };
 
-export function DropdownSpinner({
-  label,
-  selected = false,
-  onPress,
-  style,
-  textStyle,
-}: DropdownSpinnerProps) {
+export function DropdownSpinner({ label, options, onSelect }: DropdownSpinnerProps) {
+  const [selectedValue, setSelectedValue] = useState("");
+
   return (
-    <TouchableOpacity
-      activeOpacity={0.85}
-      onPress={onPress}
-      style={[styles.container, selected && styles.containerSelected, style]}
-    >
-      <Text
-        style={[
-          styles.text,
-          selected ? styles.selectedText : styles.placeholderText,
-          textStyle,
-        ]}
+    <View style={styles.container}>
+      <Picker
+        selectedValue={selectedValue}
+        onValueChange={(value) => {
+          setSelectedValue(value);
+          onSelect?.(value);
+        }}
+        style={styles.picker}
+        dropdownIconColor="#B140F0"
       >
-        {label}
-      </Text>
-      <Ionicons name="chevron-down" size={18} color="#B140F0" />
-    </TouchableOpacity>
+        <Picker.Item label={label} value="" color="#9A9A9F" />
+        {options.map((opt) => (
+          <Picker.Item key={opt} label={opt} value={opt} color="#1F1B24" />
+        ))}
+      </Picker>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#F6F3FB",
-    paddingVertical: 14,
-    paddingHorizontal: 20,
     borderRadius: 16,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: 12,
     borderWidth: 1,
     borderColor: "#ECE3FF",
+    marginBottom: 12,
+    overflow: "hidden",
   },
-  containerSelected: {
-    borderColor: "#B140F0",
-  },
-  text: {
-    fontSize: 14,
-  },
-  placeholderText: {
-    color: "#9A9A9F",
-  },
-  selectedText: {
+  picker: {
+    height: 50,
     color: "#1F1B24",
-    fontWeight: "600",
+    paddingHorizontal: 20,
   },
 });
