@@ -1,21 +1,24 @@
-﻿import { PrimaryButton } from "@/components/PrimaryButton";
+import { PrimaryButton } from "@/components/PrimaryButton";
 import { DropdownSpinner } from "@/components/dropdown-spinner";
 import { ContentCard } from "@/components/layout/content-card";
 import { Header } from "@/components/layout/header";
 import React, { useState } from "react";
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { StatusBar, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function TrocaPontosResumo() {
   const [selectedPontos, setSelectedPontos] = useState("");
   const [selectedPrograma, setSelectedPrograma] = useState("");
 
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <View style={styles.screen}>
-        <View style={styles.headerWrapper}>
-          <Header points="15.500" />
-        </View>
+    <>
+      <StatusBar translucent barStyle="light-content" backgroundColor="transparent" />
 
+      <SafeAreaView style={styles.safeTop} edges={["top"]}>
+        <Header />
+      </SafeAreaView>
+
+      <View style={styles.screen}>
         <ContentCard style={styles.content}>
           <View>
             <Text style={styles.sectionTitle}>Escolha a quantidade de pontos</Text>
@@ -28,7 +31,7 @@ export default function TrocaPontosResumo() {
 
             <DropdownSpinner
               label="Selecione o programa de Milhas"
-              options={["Teste 01", "teste 02", "teste 03"]}
+              options={["Teste 01", "Teste 02", "Teste 03"]}
               onSelect={(value) => setSelectedPrograma(value)}
             />
 
@@ -71,6 +74,7 @@ export default function TrocaPontosResumo() {
 
           <View style={styles.actions}>
             <PrimaryButton style={styles.primaryButton}>Trocar</PrimaryButton>
+
             <PrimaryButton
               style={styles.secondaryButton}
               textStyle={{ color: "#820AD1" }}
@@ -80,11 +84,23 @@ export default function TrocaPontosResumo() {
           </View>
         </ContentCard>
       </View>
-    </SafeAreaView>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
+  safeTop: {
+    backgroundColor: "#820AD1",
+  },
+  screen: {
+    flex: 1,
+    backgroundColor: "#FFFFFF",
+  },
+  content: {
+    flex: 1,
+    marginTop: -50,
+    justifyContent: "space-between",
+  },
   primaryButton: {
     backgroundColor: "#E5E2EA",
   },
@@ -93,33 +109,15 @@ const styles = StyleSheet.create({
     borderWidth: 1.5,
     borderColor: "#820AD1",
   },
-  safeArea: {
-    flex: 1,
-    backgroundColor: "#FFFFFF",
-  },
-  screen: {
-    flex: 1,
-    backgroundColor: "#FFFFFF",
-  },
-  headerWrapper: {
-    width: "100%",
-    backgroundColor: "#820AD1",
-    paddingBottom: 36,
-  },
-  content: {
-    flex: 1,
-    marginTop: -36,
-    justifyContent: "space-between",
-  },
   sectionTitle: {
     fontSize: 15,
     fontWeight: "600",
     color: "#1F1B24",
-    marginBottom: 12,
+    marginBottom: 5,
   },
   resumeTitle: {
-    marginTop: 22,
-    marginBottom: 16,
+    marginTop: 12,
+    marginBottom: 9,
   },
   resumeBox: {
     marginBottom: 28.5,
@@ -153,14 +151,8 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "600",
   },
-  divider: {
-    height: 1,
-    backgroundColor: "#E9E3F5",
-    marginVertical: 22,
-    opacity: 0.8,
-  },
   actions: {
-    marginTop: -6,
+    marginTop: -5,
     gap: 10,
   },
 });

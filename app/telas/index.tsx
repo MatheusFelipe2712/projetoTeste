@@ -2,18 +2,47 @@
 import { ContentCard } from "@/components/layout/content-card";
 import { Header } from "@/components/layout/header";
 import { PrimaryButton } from "@/components/PrimaryButton";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import React, { useState } from "react";
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import {
+  StatusBar,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function TrocarPontos() {
   const [selectedPontos, setSelectedPontos] = useState("");
   const [selectedPrograma, setSelectedPrograma] = useState("");
 
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <>
+      <StatusBar translucent barStyle="light-content" backgroundColor="transparent" />
+
+      <SafeAreaView style={styles.safeTop} edges={["top"]}>
+        <Header />
+      </SafeAreaView>
+
       <View style={styles.screen}>
-        <View style={styles.headerWrapper}>
-          <Header points="15.500" />
+        <View style={styles.headerContent}>
+          <View style={styles.headerIcons}>
+            <TouchableOpacity style={styles.iconCircle}>
+              <MaterialIcons name="chevron-left" size={20} color="#fff" />
+            </TouchableOpacity>
+
+            <Text style={styles.headerTitle}>Trocar pontos</Text>
+
+            <TouchableOpacity style={styles.iconCircle}>
+              <Text style={styles.helpText}>?</Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.pointsContainer}>
+            <Text style={styles.pointsLabel}>FyDy Pontos</Text>
+            <Text style={styles.pointsValue}>15.500</Text>
+          </View>
         </View>
 
         <ContentCard style={styles.content}>
@@ -61,6 +90,7 @@ export default function TrocarPontos() {
 
           <View style={styles.actions}>
             <PrimaryButton style={styles.primaryButton}>Trocar</PrimaryButton>
+
             <PrimaryButton
               style={styles.secondaryButton}
               textStyle={{ color: "#820AD1" }}
@@ -70,37 +100,70 @@ export default function TrocarPontos() {
           </View>
         </ContentCard>
       </View>
-    </SafeAreaView>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  primaryButton: {
-    backgroundColor: "#1AB1E2",
-    marginBottom: 0,
-  },
-  secondaryButton: {
-    backgroundColor: "#FFF",
-    borderWidth: 1.5,
-    borderColor: "#820AD1",
-    marginBottom: 50,
-  },
-  safeArea: {
-    flex: 1,
-    backgroundColor: "#FFFFFF",
+  safeTop: {
+    backgroundColor: "#820AD1",
   },
   screen: {
     flex: 1,
     backgroundColor: "#FFFFFF",
   },
-  headerWrapper: {
-    width: "100%",
-    backgroundColor: "#820AD1",
-    paddingBottom: 36,
+  headerContent: {
+    position: "absolute",
+    top: 38,
+    left: 24,
+    right: 24,
+  },
+  headerIcons: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  iconCircle: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: "rgba(255,255,255,0.15)",
+    justifyContent: "center",
+    alignItems: "center",
+    borderWidth: 1,
+    borderColor: "rgba(255,255,255,0.65)",
+  },
+  headerTitle: {
+    color: "#fff",
+    fontSize: 17,
+    fontWeight: "700",
+    letterSpacing: 0.2,
+  },
+  helpText: {
+    color: "#fff",
+    fontSize: 20,
+    fontWeight: "bold",
+    marginTop: -2,
+  },
+  pointsContainer: {
+    marginTop: 20,
+  },
+  pointsLabel: {
+    color: "#fff",
+    fontSize: 15,
+    fontWeight: "600",
+    letterSpacing: 0.15,
+  },
+  pointsValue: {
+    fontSize: 36,
+    fontWeight: "800",
+    color: "#fff",
+    marginTop: 4,
+    letterSpacing: 0.5,
   },
   content: {
     flex: 1,
-    marginTop: -36,
+    marginTop: -50,
     justifyContent: "space-between",
   },
   sectionTitle: {
@@ -110,7 +173,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   resumeTitle: {
-    marginTop: 22,
+    marginTop: 10,
     marginBottom: 16,
   },
   resumeBox: {
@@ -129,9 +192,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: "rgba(222, 214, 240, 0.6)",
   },
-  resumeRowLast: {
-    paddingTop: 5,
-  },
   resumeLabel: {
     color: "#9C9CA3",
     fontSize: 14,
@@ -141,13 +201,17 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "700",
   },
-  resumeValueMuted: {
-    color: "#B6B6BD",
-    fontSize: 14,
-    fontWeight: "600",
-  },
   actions: {
-    marginTop: 35,
+    marginTop: 24,
     gap: 10,
+  },
+  primaryButton: {
+    backgroundColor: "#1AB1E2",
+  },
+  secondaryButton: {
+    backgroundColor: "#FFF",
+    borderWidth: 1.5,
+    borderColor: "#820AD1",
+    marginBottom: 50,
   },
 });

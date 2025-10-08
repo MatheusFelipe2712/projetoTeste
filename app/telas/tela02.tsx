@@ -3,16 +3,18 @@ import { ContentCard } from "@/components/layout/content-card";
 import { Header } from "@/components/layout/header";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import React from "react";
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { StatusBar, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function TrocaPontosSucesso() {
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <View style={styles.screen}>
-        <View style={styles.headerWrapper}>
-          <Header points="13.500" />
-        </View>
+    <>
+      <StatusBar translucent barStyle="light-content" backgroundColor="transparent" />
+      <SafeAreaView style={styles.safeTop} edges={["top"]}>
+        <Header />
+      </SafeAreaView>
 
+      <View style={styles.screen}>
         <ContentCard style={styles.content}>
           <Text style={styles.successTitle}>Pontos trocados com sucesso!</Text>
 
@@ -21,29 +23,31 @@ export default function TrocaPontosSucesso() {
           </View>
 
           <Text style={styles.description}>
-            Em até <Text style={styles.descriptionHighlight}>7 dias úteis</Text>{" "}
-            as milhas serão creditadas em sua carteira de milhas escolhida.
+            Em até <Text style={styles.descriptionHighlight}>7 dias úteis</Text> as milhas serão
+            creditadas em sua carteira de milhas escolhida.
           </Text>
 
           <View style={styles.actions}>
-            <PrimaryButton style={styles.primaryButton}>
-              Ir para o início
-            </PrimaryButton>
+            <PrimaryButton style={styles.primaryButton}>Ir para o início</PrimaryButton>
 
-            <PrimaryButton
-              style={styles.secondaryButton}
-              textStyle={{ color: "#820AD1" }}
-            >
+            <PrimaryButton style={styles.secondaryButton} textStyle={{ color: "#820AD1" }}>
               Voltar para a troca de pontos
             </PrimaryButton>
           </View>
         </ContentCard>
       </View>
-    </SafeAreaView>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
+  safeTop: {
+    backgroundColor: "#820AD1",
+  },
+  screen: {
+    flex: 1,
+    backgroundColor: "#FFFFFF",
+  },
   primaryButton: {
     backgroundColor: "#1AB1E2",
   },
@@ -52,22 +56,9 @@ const styles = StyleSheet.create({
     borderWidth: 1.5,
     borderColor: "#820AD1",
   },
-  safeArea: {
-    flex: 1,
-    backgroundColor: "#FFFFFF",
-  },
-  screen: {
-    flex: 1,
-    backgroundColor: "#FFFFFF",
-  },
-  headerWrapper: {
-    width: "100%",
-    backgroundColor: "#820AD1",
-    paddingBottom: 36,
-  },
   content: {
     flex: 1,
-    marginTop: -36,
+    marginTop: -50,
     paddingTop: 28,
     paddingBottom: 28,
     alignItems: "center",
@@ -109,7 +100,7 @@ const styles = StyleSheet.create({
     fontWeight: "700",
   },
   actions: {
-    marginTop: 71,
+    marginTop: 40,
     width: "100%",
     gap: 10,
   },

@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     borderWidth: 1,
     borderColor: "#ECE3FF",
-    marginBottom: 12,
+    marginBottom: 7,
     overflow: "hidden",
   },
   picker: {
